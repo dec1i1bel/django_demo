@@ -81,7 +81,7 @@ class QuestionIndexViewTests(TestCase):
         Even if both past and future questions exist, only past questions are displayed.
         """
         question = create_question(question_text='past question when no future questions are displayed.', days=30)
-        create_question(question_text='future question that shouls be displayed only in a future')
+        create_question(question_text='future question that should be displayed only in a future')
         response = self.client.get(reverse('polls::index'))
         self.assertQuerysetEqual(
             response.context['latest_question_list'],
